@@ -88,7 +88,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "codeCoverage": true,
+            "coverage": true,
             "polyfills": [
               "zone.js",
               "zone.js/testing"
