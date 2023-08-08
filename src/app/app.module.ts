@@ -7,16 +7,9 @@ import { StoreModule } from '@ngrx/store';
 import { SearchProductComponent } from './presentation/shared/components/search-product/search-product.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchProductComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-  ],
+  declarations: [AppComponent, SearchProductComponent],
+  imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot({}, {})],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
