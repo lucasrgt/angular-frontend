@@ -1,9 +1,11 @@
 <div
   class="p-8 bg-b2blue-700 flex flex-col md:flex-row items-center justify-between">
-  <img
-    class="w-48 mb-8 md:mb-0"
-    src="assets/img/svg/b2rise-logo-white.svg"
-    alt="Logo B2RISE" />
+  <button [routerLink]="['/']" class="flex justify-center items-center">
+    <img
+      class="w-48 mb-8 md:mb-0"
+      src="assets/img/svg/b2rise-logo-white.svg"
+      alt="Logo B2RISE" />
+  </button>
   <app-search-product class="w-full mb-8 md:mb-0 md:w-1/2"></app-search-product>
   <div class="flex justify-between items-center">
     <mat-icon class="text-white mr-8">shopping_cart</mat-icon>
