@@ -1,4 +1,17 @@
-<div class="flex flex-col justify-center items-center h-screen w-screen">
+<div class="flex flex-col justify-center items-center h-screen">
+  <div class="flex-grow"></div>
   <img class="px-16" src="assets/img/svg/b2rise-logo.svg" alt="Logo B2RISE" />
   <app-search-product class="my-8 md:w-2/5 w-1/2"></app-search-product>
+  <div class="grid grid-cols-2 gap-8">
+    <button
+      class="py-2 px-8 md:px-16 lg:px-24 w-full text-white bg-b2blue-700 rounded-lg drop-shadow-lg">
+      Carrinho
+    </button>
+    <button
+      class="py-2 px-8 md:px-16 lg:px-24 w-full text-white bg-b2green-400 rounded-lg drop-shadow-lg">
+      Pesquisar
+    </button>
+  </div>
+  <div class="flex-grow"></div>
+  <app-footer class="justify-self-end"></app-footer>
 </div>
