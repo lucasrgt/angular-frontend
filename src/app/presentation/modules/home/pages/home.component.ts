@@ -10,10 +10,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   navigateToShoppingCart() {
-    this.router.navigate(['/shopping-cart']).then(success => {
-      if (!success) {
-        console.error('Falha na navegação para /shopping-cart');
-      }
-    });
+    this.router.navigate(['/shopping-cart']);
   }
 }
