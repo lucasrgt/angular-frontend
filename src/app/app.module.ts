@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { SearchProductComponent } from './presentation/shared/components/search-product/search-product.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchProductComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot({}, {})],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}
