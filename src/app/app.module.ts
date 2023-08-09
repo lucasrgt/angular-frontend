@@ -7,13 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { HomeModule } from './presentation/modules/home/home.module';
 import { ShoppingCartModule } from './presentation/modules/shopping-cart/shopping-cart.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { shoppingCartReducer } from './presentation/modules/shopping-cart/store/reducers/shopping-cart.reducers';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ shoppingCart: shoppingCartReducer }, {}),
     HomeModule,
     ShoppingCartModule,
     BrowserAnimationsModule,

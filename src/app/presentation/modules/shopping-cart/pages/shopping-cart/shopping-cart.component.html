@@ -1,2 +1,19 @@
-<app-header></app-header>
-<p>shopping-cart works!</p>
+<section class="flex flex-col h-screen">
+  <app-header></app-header>
+  <div class="h-full flex flex-col" *ngIf="cart$ | async as cart">
+    <div *ngIf="cart.items.length > 0; else emptyCart">
+      <div *ngFor="let item of cart.items">
+        {{ item.product.description }} - {{ item.product.price }}
+      </div>
+    </div>
+    <ng-template #emptyCart>
+      <div class="h-full flex flex-col justify-center items-center">
+        <h1 class="mb-8 text-4xl">O carrinho está vazio</h1>
+        <img
+          class="w-1/4 mb-8 md:mb-0"
+          src="assets/img/svg/empty-cart.svg"
+          alt="Logo B2RISE" />
+      </div>
+    </ng-template>
+  </div>
+</section>
