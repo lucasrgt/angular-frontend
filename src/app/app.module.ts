@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { HomeModule } from './presentation/modules/home/home.module';
 import { ShoppingCartModule } from './presentation/modules/shopping-cart/shopping-cart.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { ShoppingCartModule } from './presentation/modules/shopping-cart/shoppin
     StoreModule.forRoot({}, {}),
     HomeModule,
     ShoppingCartModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
