@@ -5,5 +5,6 @@ import { SearchProductComponent } from './components/search-product/search-produ
 @NgModule({
   declarations: [SearchProductComponent],
   imports: [CommonModule],
+  exports: [SearchProductComponent],
 })
 export class SharedModule {}
