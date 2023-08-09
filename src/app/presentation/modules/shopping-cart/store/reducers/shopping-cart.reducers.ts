@@ -27,10 +27,10 @@ const fakeItems = [
   {
     product: {
       id: 2,
-      description: 'Red T-shirt',
+      description: 'Blue T-shirt',
       longDescription:
-        'Red T-shirt Repellendus eligendi assumenda corrupti optio omnis ut. At distinctio quam illum incidunt suscipit dolorem. Porro dolores vel harum praesentium perferendis impedit dolor repellendus.',
-      price: 17.99,
+        'Blue T-shirt Lorem is ut. At distinctio quam illum incidunt suscipit dolorem. Porro dolores vel harum praesentium perferendis impedit dolor repellendus.',
+      price: 21.99,
     },
     id: 2,
     quantity: 1,
