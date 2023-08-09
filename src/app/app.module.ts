@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { HomeComponent } from './presentation/modules/home/pages/home.component';
 import { HomeModule } from './presentation/modules/home/home.module';
+import { ShoppingCartModule } from './presentation/modules/shopping-cart/shopping-cart.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +14,7 @@ import { HomeModule } from './presentation/modules/home/home.module';
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     HomeModule,
+    ShoppingCartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
