@@ -9,6 +9,7 @@ import { ShoppingCartModule } from './presentation/modules/shopping-cart/shoppin
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { shoppingCartReducer } from './presentation/modules/shopping-cart/store/reducers/shopping-cart.reducers';
 import { purchaseHistoryReducer } from './presentation/modules/purchase-history/store/reducers/purchase-history.reducers';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { purchaseHistoryReducer } from './presentation/modules/purchase-history/
       },
       {}
     ),
+    EffectsModule.forRoot([]),
     HomeModule,
     ShoppingCartModule,
     BrowserAnimationsModule,

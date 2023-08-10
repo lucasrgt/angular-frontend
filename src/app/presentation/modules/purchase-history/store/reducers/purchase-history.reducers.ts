@@ -7,12 +7,15 @@ export interface PurchaseHistoryState {
   orders: Order[];
 }
 
-const initialState: PurchaseHistoryState = {
-  orders: [],
+const getInitialState = (): PurchaseHistoryState => {
+  const savedOrders = localStorage.getItem('purchaseHistory');
+  const initialOrders = savedOrders ? JSON.parse(savedOrders) : [];
+
+  return { orders: initialOrders };
 };
 
 export const purchaseHistoryReducer = createReducer(
-  initialState,
+  getInitialState(),
   on(completePurchase, (state, { items }): PurchaseHistoryState => {
     const newOrder: Order = { id: state.orders.length + 1, items: items };
     return {

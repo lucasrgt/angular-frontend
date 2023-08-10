@@ -48,6 +48,7 @@
       <div class="flex justify-end my-2">
         <button
           [routerLink]="['/shopping-cart/success']"
+          (click)="confirmOrder()"
           class="bg-b2green-400 border border-[#00AD81] drop-shadow-lg px-4 py-2 text-white rounded-lg">
           Finalizar compra
         </button>

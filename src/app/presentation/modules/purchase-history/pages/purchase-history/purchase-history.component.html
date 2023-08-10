@@ -1,10 +1,18 @@
 <section class="flex flex-col h-screen">
   <app-header></app-header>
-  <ul>
-    <li *ngFor="let order of orders$ | async">
-      <h1>Pedido ID: {{ order.id }}</h1>
-    </li>
-  </ul>
+  <div class="px-64 py-8">
+    <ul>
+      <li *ngFor="let order of orders$ | async">
+        <h1>Histórico de compras</h1>
+        <h2>Pedido ID: 000{{ order.id }}</h2>
+        <div *ngFor="let items of order.items">
+          <h1>{{ items.product.description }}</h1>
+          <h1>{{ items.product.price }}</h1>
+          <h1>{{ items.quantity }}</h1>
+        </div>
+      </li>
+    </ul>
+  </div>
   <div class="flex flex-col justify-center items-center h-full">
     <ng-container *ngIf="(orders$ | async)?.length === 0">
       <img
