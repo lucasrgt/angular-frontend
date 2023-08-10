@@ -3,9 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsListRoutingModule } from './products-list-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ProductsListComponent],
-  imports: [CommonModule, SharedModule, ProductsListRoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    ProductsListRoutingModule,
+    MatIconModule,
+  ],
 })
 export class ProductsListModule {}

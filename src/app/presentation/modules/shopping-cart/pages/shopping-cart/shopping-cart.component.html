@@ -4,16 +4,16 @@
     <div
       class="flex flex-col w-full px-64"
       *ngIf="cart.items.length > 0; else emptyCart">
-      <h1 class="text-5xl my-8">Carrinho</h1>
+      <h1 class="text-5xl my-8 font-montserrat">Carrinho</h1>
       <div class="flex flex-col px-16" *ngFor="let item of cart.items">
         <div>
-          <h1 class="text-3xl">{{ item.product.description }}</h1>
-          <h2 class="my-4 text-[#505050]">
+          <h1 class="text-3xl font-saira">{{ item.product.description }}</h1>
+          <h2 class="my-4 text-[#505050] font-saira font-light italic">
             R${{ item.product.price }} / {{ item.quantity }} UN
           </h2>
           <div class="flex justify-between items-center mb-4">
             <div>
-              <button class="text-red-600 text-xl mr-8">Excluir</button>
+              <button class="text-red-600 text-xl ml-4 mr-8">Excluir</button>
               <button class="text-b2green-400 text-xl">Favoritar</button>
             </div>
             <div class="flex items-center">
@@ -36,7 +36,9 @@
               </h1>
             </div>
           </div>
-          <p>{{ item.product.longDescription }}</p>
+          <p class="font-saira w-1/2">
+            {{ item.product.longDescription }}
+          </p>
         </div>
         <div class="my-4 h-[0.5px] w-full bg-gray-100"></div>
       </div>
@@ -56,7 +58,7 @@
     </div>
     <ng-template #emptyCart class="justify-self-center">
       <div class="h-full flex flex-col justify-center items-center">
-        <h1 class="mb-8 text-5xl text-gray">O carrinho está vazio</h1>
+        <h1 class="mb-8 text-5xl text-gray title">O carrinho está vazio</h1>
         <img
           class="w-1/3 mb-8 md:mb-0"
           src="assets/img/svg/empty-cart.svg"
