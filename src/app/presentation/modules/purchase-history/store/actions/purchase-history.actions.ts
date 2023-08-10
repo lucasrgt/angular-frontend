@@ -3,7 +3,7 @@ import { Order } from '../../../../../core/domain/models/order';
 
 export const addOrderToHistory = createAction(
   '[Purchase History] Add Order to History',
-  props<{ order: Order }>()
+  props<{ order: Order; finalPrice: number }>()
 );
 
 export const loadOrdersFromHistory = createAction(

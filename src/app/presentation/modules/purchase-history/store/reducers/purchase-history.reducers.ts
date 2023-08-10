@@ -16,8 +16,12 @@ const getInitialState = (): PurchaseHistoryState => {
 
 export const purchaseHistoryReducer = createReducer(
   getInitialState(),
-  on(completePurchase, (state, { items }): PurchaseHistoryState => {
-    const newOrder: Order = { id: state.orders.length + 1, items: items };
+  on(completePurchase, (state, { items, finalPrice }): PurchaseHistoryState => {
+    const newOrder: Order = {
+      id: state.orders.length + 1,
+      items: items,
+      finalPrice: finalPrice,
+    };
     return {
       ...state,
       orders: [...state.orders, newOrder],

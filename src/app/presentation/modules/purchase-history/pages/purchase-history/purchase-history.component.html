@@ -1,20 +1,48 @@
 <section class="flex flex-col h-screen">
   <app-header></app-header>
-  <div class="px-64 py-8">
-    <ul>
-      <li *ngFor="let order of orders$ | async">
-        <h1>Histórico de compras</h1>
-        <h2>Pedido ID: 000{{ order.id }}</h2>
-        <div *ngFor="let items of order.items">
-          <h1>{{ items.product.description }}</h1>
-          <h1>{{ items.product.price }}</h1>
-          <h1>{{ items.quantity }}</h1>
-        </div>
-      </li>
-    </ul>
+  <div
+    *ngIf="(orders$ | async)?.length !== 0; else noOrders"
+    class="px-64 py-8">
+    <h1 class="text-5xl my-8">Histórico de compras</h1>
+    <div class="px-8">
+      <ul>
+        <li *ngFor="let order of orders$ | async">
+          <div class="flex justify-between items-center">
+            <h2 class="text-2xl my-4">Pedido 000{{ order.id }}</h2>
+            <h2 class="mr-8 text-xl">R${{ order.finalPrice }}</h2>
+          </div>
+          <div class="flex ml-8">
+            <div class="w-1.5 bg-b2green-400"></div>
+            <div class="flex flex-col px-8 w-full">
+              <div *ngFor="let item of order.items">
+                <div class="flex justify-between items-center">
+                  <div>
+                    <h1 class="text-xl">{{ item.product.description }}</h1>
+                    <h1 class="text-[#505050] text-sm">
+                      R${{ item.product.price }} / {{ item.quantity }} UN
+                    </h1>
+                  </div>
+                  <div class="flex">
+                    <h1 class="text-sm mr-8">
+                      {{ item.quantity }}
+                      {{ item.quantity === 1 ? 'unidade' : 'unidades' }}
+                    </h1>
+                    <h1>
+                      R${{ (item.product.price * item.quantity).toFixed(2) }}
+                    </h1>
+                  </div>
+                </div>
+                <div class="h-[0.5px] my-4 w-full bg-gray-100"></div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="flex flex-col justify-center items-center h-full">
-    <ng-container *ngIf="(orders$ | async)?.length === 0">
+
+  <ng-template #noOrders>
+    <div class="flex flex-col justify-center items-center h-full">
       <img
         class="w-64 md:mb-0"
         src="assets/img/svg/empty-order.svg"
@@ -22,6 +50,6 @@
       <h2 class="mt-8 text-xl text-b2blue-700">
         Não há nada por aqui. Que tal realizar algumas compras?
       </h2>
-    </ng-container>
-  </div>
+    </div>
+  </ng-template>
 </section>

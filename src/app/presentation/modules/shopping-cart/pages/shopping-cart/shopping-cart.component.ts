@@ -13,6 +13,7 @@ import {
   incrementQuantity,
   updateQuantity,
 } from '../../store/actions/shopping-cart.actions';
+import { ShoppingCartService } from '../../services/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -23,7 +24,10 @@ export class ShoppingCartComponent {
   cart$: Observable<ShoppingCartState>;
   finalPrice$: Observable<number>;
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private shoppingCartService: ShoppingCartService
+  ) {
     this.cart$ = store.select(selectShoppingCartState);
     this.finalPrice$ = store.select(selectTotalPrice);
   }
@@ -41,11 +45,6 @@ export class ShoppingCartComponent {
   }
 
   confirmOrder() {
-    this.store
-      .select(selectShoppingCartItems)
-      .pipe(take(1))
-      .subscribe(items => {
-        this.store.dispatch(completePurchase({ items }));
-      });
+    this.shoppingCartService.confirmOrder();
   }
 }

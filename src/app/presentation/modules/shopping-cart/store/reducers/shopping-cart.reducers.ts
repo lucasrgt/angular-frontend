@@ -45,13 +45,23 @@ const initialState: ShoppingCartState = {
 
 const _cartReducer = createReducer(
   initialState,
-  on(
-    addItem,
-    (state, { item }): ShoppingCartState => ({
+  on(addItem, (state, { item }): ShoppingCartState => {
+    const existingItem = state.items.find(existing => existing.id === item.id);
+    if (existingItem) {
+      return {
+        ...state,
+        items: state.items.map(existing =>
+          existing.id === item.id
+            ? { ...existing, quantity: existing.quantity + item.quantity }
+            : existing
+        ),
+      };
+    }
+    return {
       ...state,
       items: [...state.items, item],
-    })
-  ),
+    };
+  }),
   on(
     removeItem,
     (state, { itemId }): ShoppingCartState => ({
