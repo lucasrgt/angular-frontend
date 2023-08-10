@@ -21,6 +21,13 @@ const routes: Routes = [
         m => m.ProductsListModule
       ),
   },
+  {
+    path: 'purchase-history',
+    loadChildren: () =>
+      import(
+        './presentation/modules/purchase-history/purchase-history.module'
+      ).then(m => m.PurchaseHistoryModule),
+  },
 ];
 
 @NgModule({
