@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { Observable, take } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
-  selectShoppingCartItems,
   selectShoppingCartState,
   selectTotalPrice,
 } from '../../store/selectors/shopping-cart.selectors';
 import { ShoppingCartState } from '../../store/reducers/shopping-cart.reducers';
 import {
-  completePurchase,
   decrementQuantity,
   incrementQuantity,
   updateQuantity,
