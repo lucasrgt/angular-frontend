@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
+  selectShoppingCartItems,
   selectShoppingCartState,
   selectTotalPrice,
 } from '../../store/selectors/shopping-cart.selectors';
 import { ShoppingCartState } from '../../store/reducers/shopping-cart.reducers';
 import {
+  completePurchase,
   decrementQuantity,
   incrementQuantity,
   updateQuantity,
@@ -36,5 +38,14 @@ export class ShoppingCartComponent {
 
   updateQuantity(itemId: number, newQuantity: number) {
     this.store.dispatch(updateQuantity({ id: itemId, quantity: newQuantity }));
+  }
+
+  confirmOrder() {
+    this.store
+      .select(selectShoppingCartItems)
+      .pipe(take(1))
+      .subscribe(items => {
+        this.store.dispatch(completePurchase({ items }));
+      });
   }
 }

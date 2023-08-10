@@ -25,3 +25,10 @@ export const updateQuantity = createAction(
   '[Shopping Cart] Change Quantity',
   props<{ id: number; quantity: number }>()
 );
+
+export const completePurchase = createAction(
+  '[Shopping Cart] Complete Purchase',
+  props<{ items: ShoppingCartItem[] }>()
+);
+
+export const clearCart = createAction('[Shopping Cart] Clear Cart');

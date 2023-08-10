@@ -2,6 +2,8 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { ShoppingCartItem } from '../../../../../core/domain/models/cart-item';
 import {
   addItem,
+  clearCart,
+  completePurchase,
   decrementQuantity,
   incrementQuantity,
   removeItem,
@@ -76,7 +78,19 @@ const _cartReducer = createReducer(
     items: state.items.map(item =>
       item.id === id ? { ...item, quantity } : item
     ),
-  }))
+  })),
+  on(
+    clearCart,
+    (): ShoppingCartState => ({
+      items: [],
+    })
+  ),
+  on(
+    completePurchase,
+    (): ShoppingCartState => ({
+      items: [],
+    })
+  )
 );
 
 export const shoppingCartReducer = (

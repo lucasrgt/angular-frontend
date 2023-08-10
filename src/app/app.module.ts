@@ -8,13 +8,20 @@ import { HomeModule } from './presentation/modules/home/home.module';
 import { ShoppingCartModule } from './presentation/modules/shopping-cart/shopping-cart.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { shoppingCartReducer } from './presentation/modules/shopping-cart/store/reducers/shopping-cart.reducers';
+import { purchaseHistoryReducer } from './presentation/modules/purchase-history/store/reducers/purchase-history.reducers';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ shoppingCart: shoppingCartReducer }, {}),
+    StoreModule.forRoot(
+      {
+        shoppingCart: shoppingCartReducer,
+        purchaseHistory: purchaseHistoryReducer,
+      },
+      {}
+    ),
     HomeModule,
     ShoppingCartModule,
     BrowserAnimationsModule,
