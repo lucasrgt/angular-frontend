@@ -8,7 +8,7 @@ describe('PurchaseHistoryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PurchaseHistoryComponent]
+      declarations: [PurchaseHistoryComponent],
     });
     fixture = TestBed.createComponent(PurchaseHistoryComponent);
     component = fixture.componentInstance;

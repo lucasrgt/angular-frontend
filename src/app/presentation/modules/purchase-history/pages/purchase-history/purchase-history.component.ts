@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-purchase-history',
   templateUrl: './purchase-history.component.html',
-  styleUrls: ['./purchase-history.component.scss']
+  styleUrls: ['./purchase-history.component.scss'],
 })
-export class PurchaseHistoryComponent {
-
-}
+export class PurchaseHistoryComponent {}
