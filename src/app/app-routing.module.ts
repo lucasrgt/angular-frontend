@@ -5,28 +5,28 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./presentation/modules/home/home.module').then(m => m.HomeModule),
+      import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'shopping-cart',
     loadChildren: () =>
-      import('./presentation/modules/shopping-cart/shopping-cart.module').then(
+      import('./modules/shopping-cart/shopping-cart.module').then(
         m => m.ShoppingCartModule
       ),
   },
   {
     path: 'products',
     loadChildren: () =>
-      import('./presentation/modules/products-list/products-list.module').then(
+      import('./modules/products-list/products-list.module').then(
         m => m.ProductsListModule
       ),
   },
   {
     path: 'purchase-history',
     loadChildren: () =>
-      import(
-        './presentation/modules/purchase-history/purchase-history.module'
-      ).then(m => m.PurchaseHistoryModule),
+      import('./modules/purchase-history/purchase-history.module').then(
+        m => m.PurchaseHistoryModule
+      ),
   },
 ];
 
