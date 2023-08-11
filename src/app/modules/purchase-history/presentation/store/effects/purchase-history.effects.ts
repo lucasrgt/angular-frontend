@@ -41,11 +41,4 @@ export class PurchaseHistoryEffects {
       map(orders => loadOrdersFromHistory({ orders }))
     );
   });
-
-  logActions$ = createEffect(
-    () => {
-      return this.actions$.pipe(tap(action => console.log('Action:', action)));
-    },
-    { dispatch: false }
-  );
 }
