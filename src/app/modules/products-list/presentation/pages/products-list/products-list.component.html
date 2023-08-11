@@ -34,13 +34,16 @@
           <div class="flex justify-between mb-8">
             <div class="flex items-center">
               <input class="mr-4" type="checkbox" />
-              <div
-                class="flex-shrink-0 self-start bg-b2green-400 mr-4 w-48 h-48"></div>
+              <div class="flex-shrink-0 self-start mr-4 w-48 h-48">
+                <img
+                  src="{{ product.imgUrl }}"
+                  alt="{{ product.description }}" />
+              </div>
             </div>
             <div class="flex">
               <div class="flex w-2/3">
                 <div class="flex flex-col">
-                  <h1 class="text-3xl font-saira">Red T-SHIRT</h1>
+                  <h1 class="text-3xl font-saira">{{ product.description }}</h1>
                   <h2 class="text-lg text-[#505050] font-saira italic my-4">
                     R${{ product.price }} / 1 UN
                   </h2>

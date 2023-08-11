@@ -14,33 +14,8 @@ export interface ShoppingCartState {
   items: ShoppingCartItem[];
 }
 
-const fakeItems = [
-  {
-    product: {
-      id: 1,
-      description: 'Red T-shirt',
-      longDescription:
-        'Red T-shirt Repellendus eligendi assumenda corrupti optio omnis ut. At distinctio quam illum incidunt suscipit dolorem. Porro dolores vel harum praesentium perferendis impedit dolor repellendus.',
-      price: 17.99,
-    },
-    id: 1,
-    quantity: 1,
-  },
-  {
-    product: {
-      id: 2,
-      description: 'Blue T-shirt',
-      longDescription:
-        'Blue T-shirt Lorem is ut. At distinctio quam illum incidunt suscipit dolorem. Porro dolores vel harum praesentium perferendis impedit dolor repellendus.',
-      price: 21.99,
-    },
-    id: 2,
-    quantity: 1,
-  },
-];
-
 const initialState: ShoppingCartState = {
-  items: fakeItems,
+  items: [],
 };
 
 const _cartReducer = createReducer(

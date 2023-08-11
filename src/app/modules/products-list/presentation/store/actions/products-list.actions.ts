@@ -1,8 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 import { Product } from '../../../domain/models/product';
 
-export const loadProducts = createAction('[Products] Load Products');
-export const loadProductsSuccess = createAction(
-  '[Products] Load Products Success',
+export const loadProducts = createAction(
+  '[Products] Load Products',
   props<{ products: Product[] }>()
 );
+
+export const loadPage = createAction('[Products] Load Page');
+
+export const searchProducts = createAction(
+  '[Products] Search Products',
+  props<{ query: string }>()
+);
+
+export const resetSearch = createAction('[Products] Reset Search');

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ProductsListComponent } from './presentation/pages/products-list/products-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsListRoutingModule } from './products-list-routing.module';
@@ -10,6 +10,11 @@ import {
 } from './data/tokens/products-list.tokens';
 import { ProductsListDatasourceImpl } from './data/datasources/products-list-local-datasource';
 import { ProductsListRepositoryImpl } from './data/repositories/products-list-repository-impl';
+import { GetAllProducts } from './domain/usecases/get-all-products';
+import { ProductsListService } from './presentation/services/products-list.service';
+import { EffectsModule } from '@ngrx/effects';
+import { PurchaseHistoryEffects } from '../purchase-history/presentation/store/effects/purchase-history.effects';
+import { ProductsListEffects } from './presentation/store/effects/products-list.effects';
 
 @NgModule({
   providers: [
@@ -21,6 +26,8 @@ import { ProductsListRepositoryImpl } from './data/repositories/products-list-re
       provide: PRODUCTS_LIST_REPOSITORY_TOKEN,
       useClass: ProductsListRepositoryImpl,
     },
+    GetAllProducts,
+    ProductsListService,
   ],
   declarations: [ProductsListComponent],
   imports: [
@@ -28,6 +35,8 @@ import { ProductsListRepositoryImpl } from './data/repositories/products-list-re
     SharedModule,
     ProductsListRoutingModule,
     MatIconModule,
+    NgOptimizedImage,
+    EffectsModule.forFeature([ProductsListEffects]),
   ],
 })
 export class ProductsListModule {}
