@@ -1,14 +1,29 @@
 import { Product } from '../../domain/models/product';
 import { Injectable } from '@angular/core';
 
+import { CacheError } from '../../../../core/errors/cache-error';
+
 export interface ProductsListLocalDatasource {
   getAllProducts(): Product[];
+  saveSearch(products: Product[]): void;
+  getLastSearch(): Product[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsListDatasourceImpl implements ProductsListLocalDatasource {
+  saveSearch(products: Product[]): void {
+    localStorage.setItem('lastSearch', JSON.stringify(products));
+  }
+  getLastSearch(): Product[] {
+    try {
+      const lastSearch = localStorage.getItem('lastSearch');
+      return lastSearch ? JSON.parse(lastSearch) : [];
+    } catch (_) {
+      throw new CacheError('Error on getting last search from localstorage.');
+    }
+  }
   getAllProducts(): Product[] {
     return [
       {
@@ -27,7 +42,7 @@ export class ProductsListDatasourceImpl implements ProductsListLocalDatasource {
           'DarkGreen T-shirt Vitae omnis neque consequatur illo repellat quaerat doloribus. At ab iure modi et autem. Dolor ex eveniet architecto aut est. Est veritatis nostrum incidunt dolorum et eum. Culpa et voluptatem accusamus id debitis voluptates magnam molestiae.',
         price: 386.22,
         imgUrl:
-          'https://cdn.josephturner.co.uk/Original/Mens-Aqua-Crew-Neck-T-Shirt-MTTEESAQU_3.jpg',
+          'https://cdn.yoursclothing.com/Images/ProductImages/Big/43362787-7896-41_191758_BK.jpg',
       },
       {
         id: 3,
@@ -54,7 +69,7 @@ export class ProductsListDatasourceImpl implements ProductsListLocalDatasource {
           'BlueViolet T-shirt Deserunt mollitia labore est eos non. Aut autem aliquid numquam quaerat magni error placeat libero. Nesciunt omnis beatae ab omnis. Sunt in modi nostrum et officiis. Et qui iure tempora eum consequuntur neque. Velit distinctio ipsum.',
         price: 86.96,
         imgUrl:
-          'https://www.osklen.com.br/ccstore/v1/images/?source=/file/v7662019995867803296/products/6729418.TSHIRT-1.jpg',
+          'https://m.media-amazon.com/images/I/B1qmQK-r4OS._AC_CLa%7C2140%2C2000%7C71Ygm6J7FeL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_UY1000_.png',
       },
       {
         id: 6,

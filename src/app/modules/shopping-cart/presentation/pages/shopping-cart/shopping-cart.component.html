@@ -5,56 +5,8 @@
       class="flex flex-col w-full px-64"
       *ngIf="cart.items.length > 0; else emptyCart">
       <h1 class="text-5xl my-8 font-montserrat">Carrinho</h1>
-      <div class="flex flex-col px-16" *ngFor="let item of cart.items">
-        <div>
-          <h1 class="text-3xl font-saira">{{ item.product.description }}</h1>
-          <h2 class="my-4 text-[#505050] font-saira font-light italic">
-            R${{ item.product.price }} / {{ item.quantity }} UN
-          </h2>
-          <div class="flex justify-between items-center mb-4">
-            <div>
-              <button class="text-red-600 text-xl ml-4 mr-8">Excluir</button>
-              <button class="text-b2green-400 text-xl">Favoritar</button>
-            </div>
-            <div class="flex items-center">
-              <div
-                class="flex justify-center items-center bg-[#F0F0F0] px-4 rounded-lg mr-16">
-                <button
-                  (click)="decrementQuantity(item.id)"
-                  class="p-1 text-2xl text-red-600">
-                  -
-                </button>
-                <h1 class="mx-4">{{ item.quantity }}</h1>
-                <button
-                  (click)="incrementQuantity(item.id)"
-                  class="p-1 text-2xl text-b2green-400">
-                  +
-                </button>
-              </div>
-              <h1 class="text-xl">
-                R${{ (item.quantity * item.product.price).toFixed(2) }}
-              </h1>
-            </div>
-          </div>
-          <p class="font-saira w-1/2">
-            {{ item.product.longDescription }}
-          </p>
-        </div>
-        <div class="my-4 h-[0.5px] w-full bg-gray-100"></div>
-      </div>
-      <div class="flex justify-end items-center h-32 px-16">
-        <h1 class="mr-16 text-xl">Preço total</h1>
-        <h2 class="text-2xl">R${{ (finalPrice$ | async)?.toFixed(2) }}</h2>
-      </div>
-      <div class="my-4 h-[0.5px] w-full bg-gray-100"></div>
-      <div class="flex justify-end my-2">
-        <button
-          [routerLink]="['/shopping-cart/success']"
-          (click)="confirmOrder()"
-          class="bg-b2green-400 border border-[#00AD81] drop-shadow-lg px-4 py-2 text-white rounded-lg">
-          Finalizar compra
-        </button>
-      </div>
+      <app-shopping-cart-product-container />
+      <app-confirm-purchase-container />
     </div>
     <ng-template #emptyCart class="justify-self-center">
       <div class="h-full flex flex-col justify-center items-center">

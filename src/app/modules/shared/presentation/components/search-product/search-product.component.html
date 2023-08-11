@@ -6,6 +6,7 @@
     class="p-2 px-4 rounded-lg w-full"
     type="text"
     [(ngModel)]="searchTerm"
+    (ngModelChange)="onSearchTermChange()"
     placeholder="Pesquisar por produtos" />
   <button type="submit" class="flex justify-center items-center">
     <mat-icon class="mr-2 text-b2blue-700">search</mat-icon>

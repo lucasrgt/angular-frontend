@@ -13,8 +13,9 @@ import { ProductsListRepositoryImpl } from './data/repositories/products-list-re
 import { GetAllProducts } from './domain/usecases/get-all-products';
 import { ProductsListService } from './presentation/services/products-list.service';
 import { EffectsModule } from '@ngrx/effects';
-import { PurchaseHistoryEffects } from '../purchase-history/presentation/store/effects/purchase-history.effects';
 import { ProductsListEffects } from './presentation/store/effects/products-list.effects';
+import { GetLastSearch } from './domain/usecases/get-last-search';
+import { SaveSearch } from './domain/usecases/save-search';
 
 @NgModule({
   providers: [
@@ -27,6 +28,8 @@ import { ProductsListEffects } from './presentation/store/effects/products-list.
       useClass: ProductsListRepositoryImpl,
     },
     GetAllProducts,
+    GetLastSearch,
+    SaveSearch,
     ProductsListService,
   ],
   declarations: [ProductsListComponent],

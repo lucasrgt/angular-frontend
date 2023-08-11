@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import {
-  resetSearch,
-  searchProducts,
-} from '../../../../products-list/presentation/store/actions/products-list.actions';
-import { Router } from '@angular/router';
+import { SearchProductService } from '../../services/search-product/search-product.service';
 
 @Component({
   selector: 'app-search-product',
@@ -13,17 +8,14 @@ import { Router } from '@angular/router';
 })
 export class SearchProductComponent {
   searchTerm = '';
-  constructor(
-    private readonly store: Store,
-    private readonly router: Router
-  ) {}
-  public onSearch(): void {
-    const emptySearch = this.searchTerm.trim() === '';
-    if (emptySearch) {
-      this.store.dispatch(resetSearch());
-    } else {
-      this.store.dispatch(searchProducts({ query: this.searchTerm }));
-    }
-    this.router.navigate(['/products']);
+
+  constructor(private readonly searchProductService: SearchProductService) {}
+
+  onSearch(): void {
+    this.searchProductService.search(this.searchTerm);
+  }
+
+  onSearchTermChange(): void {
+    this.searchProductService.setSearchTerm(this.searchTerm);
   }
 }

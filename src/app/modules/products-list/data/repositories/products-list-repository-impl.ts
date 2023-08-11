@@ -12,6 +12,13 @@ export class ProductsListRepositoryImpl implements ProductsListRepository {
     @Inject(PRODUCTS_LIST_LOCAL_DATASOURCE_TOKEN)
     private readonly localDatasource: ProductsListLocalDatasource
   ) {}
+
+  saveSearch(products: Product[]): void {
+    this.localDatasource.saveSearch(products);
+  }
+  getLastSearch(): Product[] {
+    return this.localDatasource.getLastSearch();
+  }
   getAllProducts(): Product[] {
     return this.localDatasource.getAllProducts();
   }

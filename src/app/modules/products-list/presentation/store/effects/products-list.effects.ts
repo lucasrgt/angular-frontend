@@ -16,7 +16,7 @@ export class ProductsListEffects {
     private service: ProductsListService
   ) {}
 
-  loadInitialState$ = createEffect(() => {
+  searchProductsState$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(searchProducts),
       mergeMap(() => of(this.service.getAllProducts())),

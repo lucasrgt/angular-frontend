@@ -1,21 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { ShoppingCartProductContainerComponent } from './shopping-cart-product-container.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { SearchProductService } from '../../services/search-product/search-product.service';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('ShoppingCartProductContainerComponent', () => {
+  let component: ShoppingCartProductContainerComponent;
+  let fixture: ComponentFixture<ShoppingCartProductContainerComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
+      declarations: [ShoppingCartProductContainerComponent],
       imports: [EffectsModule.forRoot([]), StoreModule.forRoot({})],
-      providers: [SearchProductService],
     });
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(ShoppingCartProductContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

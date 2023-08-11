@@ -20,3 +20,8 @@ export const selectTotalProductsPrice = createSelector(
   (products: Product[]) =>
     products.reduce((total, product) => total + product.price, 0)
 );
+
+export const selectProductsArrayEmpty = createSelector(
+  selectProductsState,
+  (state: ProductsState) => state.items.length === 0
+);

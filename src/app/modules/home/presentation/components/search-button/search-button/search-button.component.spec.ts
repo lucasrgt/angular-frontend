@@ -1,21 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { SearchButtonComponent } from './search-button.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { SearchProductService } from '../../services/search-product/search-product.service';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('SearchButtonComponent', () => {
+  let component: SearchButtonComponent;
+  let fixture: ComponentFixture<SearchButtonComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
+      declarations: [SearchButtonComponent],
       imports: [EffectsModule.forRoot([]), StoreModule.forRoot({})],
-      providers: [SearchProductService],
     });
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(SearchButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
