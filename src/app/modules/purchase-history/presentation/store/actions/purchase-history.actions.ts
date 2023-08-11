@@ -7,5 +7,8 @@ export const addOrderToHistory = createAction(
 );
 
 export const loadOrdersFromHistory = createAction(
-  '[Purchase History] Load Orders from History'
+  '[Purchase History] Load Orders from History',
+  props<{ orders: Order[] }>()
 );
+
+export const loadPage = createAction('[Purchase History] Load Page');
