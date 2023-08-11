@@ -37,7 +37,6 @@ export class PurchaseHistoryEffects {
     return this.actions$.pipe(
       ofType(loadPage),
       mergeMap(() => of(this.service.getLastOrders())),
-      tap(orders => console.log('Orders:', orders)),
       map(orders => loadOrdersFromHistory({ orders }))
     );
   });
