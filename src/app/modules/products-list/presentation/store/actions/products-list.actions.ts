@@ -6,8 +6,6 @@ export const loadProducts = createAction(
   props<{ products: Product[] }>()
 );
 
-export const loadPage = createAction('[Products] Load Page');
-
 export const searchProducts = createAction(
   '[Products] Search Products',
   props<{ query: string }>()

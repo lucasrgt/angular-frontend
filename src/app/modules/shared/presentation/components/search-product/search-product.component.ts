@@ -4,6 +4,7 @@ import {
   resetSearch,
   searchProducts,
 } from '../../../../products-list/presentation/store/actions/products-list.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-product',
@@ -12,11 +13,17 @@ import {
 })
 export class SearchProductComponent {
   searchTerm = '';
-  constructor(private readonly store: Store) {}
+  constructor(
+    private readonly store: Store,
+    private readonly router: Router
+  ) {}
   public onSearch(): void {
-    if (this.searchTerm === '') {
+    const emptySearch = this.searchTerm.trim() === '';
+    if (emptySearch) {
       this.store.dispatch(resetSearch());
+    } else {
+      this.store.dispatch(searchProducts({ query: this.searchTerm }));
     }
-    this.store.dispatch(searchProducts({ query: this.searchTerm }));
+    this.router.navigate(['/products']);
   }
 }

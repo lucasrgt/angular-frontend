@@ -6,7 +6,6 @@ import {
   selectAllProducts,
   selectTotalProductsPrice,
 } from '../../store/selectors/products-list.selectors';
-import { loadPage } from '../../store/actions/products-list.actions';
 
 @Component({
   selector: 'app-products-list',
@@ -20,7 +19,6 @@ export class ProductsListComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadPage());
     this.products$ = this.store.select(selectAllProducts);
     this.totalProductsPrice$ = this.store.select(selectTotalProductsPrice);
   }

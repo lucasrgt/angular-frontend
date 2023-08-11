@@ -1,13 +1,19 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { Product } from '../../../domain/models/product';
-import { loadProducts, searchProducts } from '../actions/products-list.actions';
+import {
+  loadProducts,
+  resetSearch,
+  searchProducts,
+} from '../actions/products-list.actions';
 
 export interface ProductsState {
   items: Product[];
+  searchQuery: string;
 }
 
 const initialState: ProductsState = {
   items: [],
+  searchQuery: '',
 };
 
 const _productsReducer = createReducer(
@@ -16,17 +22,27 @@ const _productsReducer = createReducer(
     loadProducts,
     (state, { products }): ProductsState => ({
       ...state,
-      items: products,
+      items: products.filter(product =>
+        product.description
+          .toLowerCase()
+          .includes(state.searchQuery.toLowerCase())
+      ),
     })
   ),
-  on(searchProducts, (state, { query }): ProductsState => {
-    return {
+  on(
+    searchProducts,
+    (state, { query }): ProductsState => ({
       ...state,
-      items: state.items.filter(product =>
-        product.description.toLowerCase().includes(query.toLowerCase())
-      ),
-    };
-  })
+      searchQuery: query,
+    })
+  ),
+  on(
+    resetSearch,
+    (state): ProductsState => ({
+      ...state,
+      searchQuery: '',
+    })
+  )
 );
 
 export const productsReducer = (
