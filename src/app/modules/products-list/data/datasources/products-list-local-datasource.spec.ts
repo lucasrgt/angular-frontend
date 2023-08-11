@@ -6,7 +6,7 @@ describe('ProductsList Local Datasource', () => {
     const sut = new ProductsListDatasourceImpl();
 
     // act
-    const result = sut.getAll();
+    const result = sut.getAllProducts();
 
     // assert
     const expected = [

@@ -1,11 +1,15 @@
 import { Product } from '../../domain/models/product';
+import { Injectable } from '@angular/core';
 
 export interface ProductsListLocalDatasource {
-  getAll(): Product[];
+  getAllProducts(): Product[];
 }
 
+@Injectable({
+  providedIn: 'root',
+})
 export class ProductsListDatasourceImpl implements ProductsListLocalDatasource {
-  getAll(): Product[] {
+  getAllProducts(): Product[] {
     return [
       {
         id: 1,
