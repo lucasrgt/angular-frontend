@@ -15,7 +15,7 @@ import { ShoppingCartLocalDatasourceImpl } from './data/datasources/shopping-car
 import { ShoppingCartRepositoryImpl } from './data/repositories/shopping-cart-repository-impl';
 import { GetLastCart } from './domain/usecases/get-last-cart';
 import { SaveCart } from './domain/usecases/save-cart';
-import { ShoppingCartService } from './presentation/services/shopping-cart.service';
+import { ShoppingCartService } from './presentation/services/shopping-cart/shopping-cart.service';
 import { EffectsModule } from '@ngrx/effects';
 import { ShoppingCartEffects } from './presentation/store/effects/shopping-cart.effects';
 

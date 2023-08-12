@@ -40,7 +40,7 @@ export class ProductsListComponent implements OnInit {
         filter(isEmpty => isEmpty)
       )
       .subscribe(() => {
-        this.store.dispatch(resetSearch());
+        this.store.dispatch(resetSearch({ query: this.searchTerm }));
       });
     this.searchProductService.getSearchTerm().subscribe(term => {
       this.searchTerm = term;

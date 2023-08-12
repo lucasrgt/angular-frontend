@@ -2,7 +2,7 @@
   <app-header></app-header>
   <div
     *ngIf="(orders$ | async)?.length !== 0; else noOrders"
-    class="px-64 py-8">
+    class="px-8 lg:px-64 py-8">
     <h1 class="text-5xl my-8 font-montserrat">Histórico de compras</h1>
     <div class="px-8">
       <ul>
@@ -11,14 +11,16 @@
             <h2 class="text-2xl my-4 font-saira">Pedido 000{{ order.id }}</h2>
             <h2 class="mr-8 text-xl">R${{ order.finalPrice }}</h2>
           </div>
-          <div class="flex ml-8">
+          <div class="flex ml-0 lg:ml-8">
             <div class="w-1.5 bg-b2green-400"></div>
             <div class="flex flex-col px-8 w-full">
               <div *ngFor="let item of order.items">
-                <div class="flex justify-between items-center">
-                  <div class="flex justify-between items-center">
+                <div
+                  class="flex flex-col lg:flex-row justify-center lg:justify-between items-center">
+                  <div
+                    class="flex flex-col lg:flex-row justify-center lg:justify-between items-center">
                     <div
-                      class="flex-shrink-0 self-start flex justify-center items-center mr-4 w-24 h-24">
+                      class="flex-shrink-0 self-center lg:self-start flex justify-center items-center mr-4 w-24 h-24">
                       <img
                         class="max-w-full max-h-full object-contain"
                         src="{{ item.product.imgUrl }}"
@@ -28,13 +30,14 @@
                       <h1 class="text-2xl font-saira">
                         {{ item.product.description }}
                       </h1>
-                      <h1 class="text-[#505050] text-md font-saira italic">
+                      <h1
+                        class="text-[#505050] text-md font-saira italic text-center lg:text-start">
                         R${{ item.product.price }} / {{ item.quantity }} UN
                       </h1>
                     </div>
                   </div>
-                  <div class="flex">
-                    <h1 class="text-sm mr-8">
+                  <div class="flex flex-col lg:flex-row">
+                    <h1 class="text-sm mr-0 lg:mr-8 text-center lg:text-start">
                       {{ item.quantity }}
                       {{ item.quantity === 1 ? 'unidade' : 'unidades' }}
                     </h1>
@@ -58,7 +61,7 @@
         class="w-64 md:mb-0"
         src="assets/img/svg/empty-order.svg"
         alt="Empty Purchase History" />
-      <h2 class="mt-8 text-xl text-b2blue-700">
+      <h2 class="mt-8 text-xl text-b2blue-700 text-center">
         Não há nada por aqui. Que tal realizar algumas compras?
       </h2>
     </div>

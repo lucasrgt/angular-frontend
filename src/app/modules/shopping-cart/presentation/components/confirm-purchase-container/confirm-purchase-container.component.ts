@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  selectShoppingCartItems,
-  selectTotalPrice,
-} from '../../store/selectors/shopping-cart.selectors';
-import { Observable, take } from 'rxjs';
-import { completePurchase } from '../../store/actions/shopping-cart.actions';
+import { selectTotalPrice } from '../../store/selectors/shopping-cart.selectors';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { ShoppingCartService } from '../../services/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-confirm-purchase-container',
@@ -21,18 +17,8 @@ export class ConfirmPurchaseContainerComponent {
   ) {
     this.finalPrice$ = this.store.select(selectTotalPrice);
   }
+
   confirmOrder() {
-    this.store
-      .select(selectShoppingCartItems)
-      .pipe(take(1))
-      .subscribe(items => {
-        this.finalPrice$.pipe(take(1)).subscribe(finalPrice => {
-          const finalPriceRounded = parseFloat(finalPrice.toFixed(2));
-          this.store.dispatch(
-            completePurchase({ items, finalPrice: finalPriceRounded })
-          );
-          this.service.emptyCart();
-        });
-      });
+    this.service.confirmOrder();
   }
 }

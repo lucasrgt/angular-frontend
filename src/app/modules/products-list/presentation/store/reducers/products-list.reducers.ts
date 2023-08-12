@@ -38,9 +38,9 @@ const _productsReducer = createReducer(
   ),
   on(
     resetSearch,
-    (state): ProductsState => ({
+    (state, { query }): ProductsState => ({
       ...state,
-      searchQuery: '',
+      searchQuery: query,
     })
   )
 );

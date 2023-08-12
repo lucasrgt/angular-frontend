@@ -12,7 +12,7 @@ import {
   updateQuantity,
 } from '../actions/shopping-cart.actions';
 import { map, mergeMap, tap } from 'rxjs/operators';
-import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { ShoppingCartService } from '../../services/shopping-cart/shopping-cart.service';
 import { selectShoppingCartItems } from '../selectors/shopping-cart.selectors';
 import {
   loadOrdersFromHistory,

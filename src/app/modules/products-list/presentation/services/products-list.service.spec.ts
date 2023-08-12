@@ -10,7 +10,6 @@ import {
 import { ProductsListDatasourceImpl } from '../../data/datasources/products-list-local-datasource';
 import { ProductsListRepositoryImpl } from '../../data/repositories/products-list-repository-impl';
 import { EffectsModule } from '@ngrx/effects';
-import { ProductsListEffects } from '../store/effects/products-list.effects';
 import { StoreModule } from '@ngrx/store';
 
 describe('ProductsListService', () => {

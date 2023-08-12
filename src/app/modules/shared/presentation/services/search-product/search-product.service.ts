@@ -29,7 +29,7 @@ export class SearchProductService {
   public search(query: string): void {
     const emptySearch = query.trim() === '';
     if (emptySearch) {
-      this.store.dispatch(resetSearch());
+      this.store.dispatch(resetSearch({ query: query }));
     } else {
       this.store.dispatch(searchProducts({ query: query }));
     }

@@ -7,6 +7,7 @@ import {
   updateQuantity,
   decrementQuantity,
   incrementQuantity,
+  removeItem,
 } from '../../store/actions/shopping-cart.actions';
 
 @Component({
@@ -29,5 +30,9 @@ export class ShoppingCartProductContainerComponent {
 
   updateQuantity(itemId: number, newQuantity: number) {
     this.store.dispatch(updateQuantity({ id: itemId, quantity: newQuantity }));
+  }
+
+  removeItem(itemId: number) {
+    this.store.dispatch(removeItem({ itemId: itemId }));
   }
 }

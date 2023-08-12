@@ -11,4 +11,7 @@ export const searchProducts = createAction(
   props<{ query: string }>()
 );
 
-export const resetSearch = createAction('[Products] Reset Search');
+export const resetSearch = createAction(
+  '[Products] Reset Search',
+  props<{ query: string }>()
+);
