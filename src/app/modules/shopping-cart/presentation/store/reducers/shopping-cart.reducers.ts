@@ -5,6 +5,7 @@ import {
   completePurchase,
   decrementQuantity,
   incrementQuantity,
+  loadCart,
   removeItem,
   updateQuantity,
 } from '../actions/shopping-cart.actions';
@@ -70,12 +71,18 @@ const _cartReducer = createReducer(
       items: [],
     })
   ),
-  on(
-    completePurchase,
-    (): ShoppingCartState => ({
+  on(completePurchase, (state): ShoppingCartState => {
+    return {
+      ...state,
       items: [],
-    })
-  )
+    };
+  }),
+  on(loadCart, (state, { items }): ShoppingCartState => {
+    return {
+      ...state,
+      items: items,
+    };
+  })
 );
 
 export const shoppingCartReducer = (

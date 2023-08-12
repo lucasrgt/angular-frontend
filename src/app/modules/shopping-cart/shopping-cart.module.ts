@@ -16,6 +16,8 @@ import { ShoppingCartRepositoryImpl } from './data/repositories/shopping-cart-re
 import { GetLastCart } from './domain/usecases/get-last-cart';
 import { SaveCart } from './domain/usecases/save-cart';
 import { ShoppingCartService } from './presentation/services/shopping-cart.service';
+import { EffectsModule } from '@ngrx/effects';
+import { ShoppingCartEffects } from './presentation/store/effects/shopping-cart.effects';
 
 @NgModule({
   providers: [
@@ -37,6 +39,12 @@ import { ShoppingCartService } from './presentation/services/shopping-cart.servi
     ShoppingCartProductContainerComponent,
     ConfirmPurchaseContainerComponent,
   ],
-  imports: [CommonModule, SharedModule, ShoppingCartRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    ShoppingCartRoutingModule,
+    FormsModule,
+    EffectsModule.forFeature(ShoppingCartEffects),
+  ],
 })
 export class ShoppingCartModule {}

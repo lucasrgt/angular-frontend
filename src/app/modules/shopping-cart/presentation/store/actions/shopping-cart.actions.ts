@@ -32,3 +32,10 @@ export const completePurchase = createAction(
 );
 
 export const clearCart = createAction('[Shopping Cart] Clear Cart');
+
+export const loadCart = createAction(
+  '[Shopping Cart] Load Cart',
+  props<{ items: ShoppingCartItem[] }>()
+);
+
+export const initialCart = createAction('[Shopping Cart] Initial Cart');

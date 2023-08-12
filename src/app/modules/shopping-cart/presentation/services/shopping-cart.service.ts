@@ -12,8 +12,8 @@ export class ShoppingCartService {
     private readonly saveCartUsecase: SaveCart
   ) {}
 
-  getLastCart() {
-    this.getLastCartUsecase.call();
+  getLastCart(): ShoppingCartItem[] {
+    return this.getLastCartUsecase.call();
   }
 
   saveCart(cartItems: ShoppingCartItem[]) {
