@@ -19,4 +19,8 @@ export class ShoppingCartService {
   saveCart(cartItems: ShoppingCartItem[]) {
     this.saveCartUsecase.call(cartItems);
   }
+
+  emptyCart(): void {
+    localStorage.removeItem('lastCart');
+  }
 }

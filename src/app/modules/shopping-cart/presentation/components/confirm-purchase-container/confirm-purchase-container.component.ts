@@ -6,6 +6,7 @@ import {
 import { Observable, take } from 'rxjs';
 import { completePurchase } from '../../store/actions/shopping-cart.actions';
 import { Store } from '@ngrx/store';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-confirm-purchase-container',
@@ -14,7 +15,10 @@ import { Store } from '@ngrx/store';
 })
 export class ConfirmPurchaseContainerComponent {
   finalPrice$: Observable<number>;
-  constructor(private readonly store: Store) {
+  constructor(
+    private readonly store: Store,
+    private readonly service: ShoppingCartService
+  ) {
     this.finalPrice$ = this.store.select(selectTotalPrice);
   }
   confirmOrder() {
@@ -27,6 +31,7 @@ export class ConfirmPurchaseContainerComponent {
           this.store.dispatch(
             completePurchase({ items, finalPrice: finalPriceRounded })
           );
+          this.service.emptyCart();
         });
       });
   }
